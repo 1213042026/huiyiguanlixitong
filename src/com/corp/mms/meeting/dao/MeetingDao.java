@@ -595,6 +595,32 @@ public class MeetingDao {
 		}
 		return meetingList;
 	}
+
+	public ArrayList<Meeting> GetMeetingLs(String workerID) {
+		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
+		String sql="select homeNo, attendance,beginTime,endTime,topic, applyTime "
+			+"from tb_meetingapply left join tb_homes on tb_meetingapply.homeID=tb_homes.id"
+			+" where tb_meetingapply.statusID=0  and tb_meetingapply.workerID= '"+ workerID + "';";
+		try{
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				Meeting meeting=new Meeting();
+				meeting.setTopic(rs.getString("topic"));
+				meeting.setHomeNo(rs.getString("homeNo"));
+				meeting.setAttendance(rs.getInt("attendance"));
+				meeting.setBeginTime(rs.getString("beginTime"));
+				meeting.setEndTime(rs.getString("endTime"));
+				meeting.setApplyTime(rs.getString("applyTime"));
+				meetingList.add(meeting);
+			}
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return null;
+		}
+		return meetingList;
+	}
+
 	//获取所有会议数
 	public int GetAllMeetingPage(){
 		int count=0;

@@ -6,7 +6,7 @@ Target Host: localhost
 Target Database: meetingmanagesys
 Date: 2013/4/9 10:25:56
 */
-
+user meetingmanagesys;
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for tb_attendworkers

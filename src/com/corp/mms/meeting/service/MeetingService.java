@@ -76,6 +76,10 @@ public class MeetingService
   public ArrayList<Meeting> GetMeetingList() {
     return this.md.GetMeetingList();
   }
+
+   public ArrayList<Meeting> GetMeetingLs(String workerID ) {
+    return this.md.GetMeetingLs(workerID);
+  }
   public int GetAllMeetingPage() {
     return this.md.GetAllMeetingPage();
   }
